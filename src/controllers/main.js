@@ -23,10 +23,10 @@ export const login = async (req, res) => {
 
 export const dashboard = async (req, res) => {
   const number = Math.floor(Math.random() * 100);
+  const { user } = res;
 
-  res.status(200).json({
-    message: 'Dashboard',
-    secret: 'This is a secret',
-    number,
+  return res.status(200).json({
+    msg: `Hello ${user.username}!`,
+    secret: `Your secret number is ${number}`,
   });
 };
