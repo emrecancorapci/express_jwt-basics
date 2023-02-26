@@ -12,7 +12,7 @@
   },
   "rules": {
     "prettier/prettier": "warn",
-    "import/extensions": "off",
+    "import/extensions": "warn",
     "no-unused-vars": "warn",
     "arrow-body-style": "warn",
     "no-var": "warn"
