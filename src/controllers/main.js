@@ -1,13 +1,13 @@
 import jwt from 'jsonwebtoken';
 import { v4 as uuid } from 'uuid';
 
-import CustomAPIError from '../errors/custom-error.js';
+import { BadRequest } from '../errors/index.js';
 
 export const login = async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
-    throw new CustomAPIError('Please provide username and password', 400);
+    throw new BadRequest('Please provide username and password');
   }
 
   const id = uuid();

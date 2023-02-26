@@ -1,11 +1,11 @@
 import jwt from 'jsonwebtoken';
-import CustomAPIError from '../errors/custom-error.js';
+import Unauthenticated from '../errors/unauth.js';
 
 export default async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith('Bearer')) {
-    throw new CustomAPIError('Not authorized', 401);
+    throw new Unauthenticated('Not authorized');
   }
 
   const token = authHeader.split(' ')[1];
@@ -14,7 +14,7 @@ export default async (req, res, next) => {
     const { id, username } = jwt.verify(token, process.env.JWT_SECRET);
     res.user = { id, username };
   } catch (err) {
-    throw new CustomAPIError('Not authorized. Token is invalid.', 401);
+    throw new Unauthenticated('Not authorized. Token is invalid.');
   }
 
   next();
