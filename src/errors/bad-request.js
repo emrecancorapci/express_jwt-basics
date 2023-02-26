@@ -1,6 +1,6 @@
-import { StatusCodes } from 'http-status-codes/build/cjs/status-codes';
+import { StatusCodes } from 'http-status-codes';
 
-import CustomAPIError from './custom-error';
+import CustomAPIError from './custom-error.js';
 
 export default class BadRequestError extends CustomAPIError {
   constructor(message) {
